@@ -10,6 +10,16 @@ $DaysOld    = 7 # Nur Dateien aelter als X Tage loeschen
 $CleanDownloads = $true # Auf $true setzen, wenn Downloads auch bereinigt werden sollen
 $CleanScreenshots = $true # Auf $true setzen, wenn Screenshots auch bereinigt werden sollen
 
+#Anlage als Scheduled Task empfohlen, z.B. woechentlich oder monatlich.
+
+$ScriptPath = "C:\Pfad\zu\CleanupTemp.ps1"   # <-- hier deinen echten Pfad eintragen
+$Action  = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""
+$Trigger = New-ScheduledTaskTrigger -AtStartup
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+$Principal = New-ScheduledTaskPrincipal -UserId "$env:USERNAME" -LogonType Interactive -RunLevel Highest
+Register-ScheduledTask -TaskName "CleanupTemp at Startup" -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description "Bereinigt Temp, Downloads und Screenshots beim Systemstart"
+
+
 function Cleanup-Folder {
     param(
         [string]$Path,
