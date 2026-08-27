@@ -5,7 +5,7 @@
 $TempPath   = "$env:LOCALAPPDATA\Temp"
 $DownPath   = "$env:USERPROFILE\Downloads"
 $PicPath    = "$env:USERPROFILE\Pictures\Screenshots"
-$LogFile    = "$env:USERPROFILE\Downloads\CleanupLog.txt"
+$LogFile    = "$env:USERPROFILE\Downloads\CleanupLog.html"
 $DaysOld    = 7 # Nur Dateien aelter als X Tage loeschen
 $CleanDownloads = $true # Auf $true setzen, wenn Downloads auch bereinigt werden sollen
 $CleanScreenshots = $true # Auf $true setzen, wenn Screenshots auch bereinigt werden sollen
