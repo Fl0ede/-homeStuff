@@ -12,6 +12,8 @@ $CleanScreenshots = $true # Auf $true setzen, wenn Screenshots auch bereinigt we
 
 #Anlage als Scheduled Task empfohlen, z.B. woechentlich oder monatlich.
 
+#Derzeit auf Systemstart gesetzt, kann aber nach Bedarf angepasst werden :)
+
 $ScriptPath = "C:\Pfad\zu\CleanupTemp.ps1"   # <-- hier deinen echten Pfad eintragen
 $Action  = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""
 $Trigger = New-ScheduledTaskTrigger -AtStartup
